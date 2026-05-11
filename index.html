@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StandUp - Il tappeto intelligente</title>
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* VARIABILI COLORI */
+    :root {
+      --bg-main: #e7e2d8;
+      --bg-secondary: #d6d0c4;
+      --card-bg: #f5f2eb;
+      --text-main: #111;
+      --accent: #6b8e23;
+    }
+
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* BODY */
+    body {
+      background: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 10%;
+      position: fixed;
+      width: 100%;
+      background: rgba(231, 226, 216, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
+
+    /* LOGO HEADER */
+    header h1 img {
+      height: 32px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    /* NAV */
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: var(--text-main);
+      transition: 0.3s;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* CTA NAV */
+    .cta-nav {
+      background: var(--text-main);
+      color: white !important;
+      padding: 8px 15px;
+      border-radius: 6px;
+    }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 10%;
+    }
+
+    /* HERO CONTENT */
+    .hero-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+      width: 100%;
+    }
+
+    /* TESTO HERO */
+    .hero h2 {
+      font-size: 3rem;
+      font-family: 'Manrope', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    .hero span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 420px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    /* LOGO HERO (FIX PROPORZIONI) */
+    .hero-img {
+      max-width: 240px;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      opacity: 0.9;
+    }
+
+    /* BUTTON */
+    .btn {
+      padding: 12px 25px;
+      background: var(--text-main);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+
+    .btn:hover {
+      background: #333;
+    }
+
+    /* SEZIONI */
+    section {
+      padding: 80px 10%;
+    }
+
+    h2 {
+      font-family: 'Manrope', sans-serif;
+      margin-bottom: 40px;
+      font-size: 2rem;
+    }
+
+    /* FEATURES GRID */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    /* CARD */
+    .card {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 15px;
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    /* ANIMAZIONE */
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card:hover {
+      background: var(--bg-secondary);
+      transform: translateY(-6px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-family: 'Manrope', sans-serif;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: var(--bg-secondary);
+      color: #333;
+      font-size: 0.9rem;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width: 768px) {
+
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .hero-img {
+        max-width: 180px;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>StandUp</h1>
+  <nav>
+    <a href="#features">Funzioni</a>
+    <a href="#about">Chi siamo</a>
+    <a href="#contact">Contatti</a>
+    <a href="#" class="cta-nav">Preordina</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div>
+      <h2>Svegliati. <span>Proteggiti.</span> Evolvi.</h2>
+      <p>Il tappeto intelligente che spegne la sveglia, protegge la tua casa e monitora il tuo peso.</p>
+      <button class="btn" onclick="scrollToSection('features')">Scopri di più</button>
+    </div>
+
+    <img src="logo.png" alt="StandUp tappeto smart" class="hero-img">
+  </div>
+</section>
+
+<section id="features">
+  <h2>Funzionalità</h2>
+  <div class="features">
+    <div class="card">
+      <h3>⏰ Sveglia Smart</h3>
+      <p>Si spegne solo quando ti alzi davvero dal letto.</p>
+    </div>
+
+    <div class="card">
+      <h3>🚨 Modalità Allarme</h3>
+      <p>Rileva intrusioni e invia notifiche al tuo smartphone.</p>
+    </div>
+
+    <div class="card">
+      <h3>⚖️ Monitoraggio Peso</h3>
+      <p>Registra automaticamente il tuo peso ogni giorno.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <h2>Chi siamo</h2>
+  <p>
+    Siamo un team di innovatori che vuole rivoluzionare il modo in cui inizi la giornata.
+    StandUp combina tecnologia smart, sicurezza domestica e benessere in un unico dispositivo.
+  </p>
+</section>
+
+<section id="contact">
+  <h2>Contattaci</h2>
+  <p>Email: info@standup.com</p>
+</section>
+
+<footer>
+  <p>© 2026 StandUp - Tutti i diritti riservati</p>
+</footer>
+
+<script>
+  function scrollToSection(section) {
+    document.getElementById(section).scrollIntoView({ behavior: "smooth" });
+  }
+
+  // Animazione card on scroll
+  const cards = document.querySelectorAll(".card");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  });
+
+  cards.forEach(card => observer.observe(card));
+</script>
+
+</body>
+</html>
