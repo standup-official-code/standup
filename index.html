@@ -77,11 +77,12 @@
       text-decoration: none;
       color: var(--text-main);
       background: var(--card-bg);
-      padding: 10px 16px;
-      border-radius: var(--radius);
-      font-weight: 500;
+      font-weight: 600;
       transition: 0.3s;
       box-shadow: var(--shadow);
+       padding: 20px 20px;     /* prima 10px 16px */
+  font-size: 1rem;        /* prima 0.95 circa */
+  border-radius: 14px; 
     }
 
     .floating-nav a:hover {
@@ -95,7 +96,7 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 80px 10% 40px;
+     padding: 80px 10% 40px;
     }
 
     .hero-content {
@@ -163,7 +164,8 @@
 
     h2 {
       font-family: 'Manrope', sans-serif;
-      margin-bottom: 40px;
+      margin-bottom:20px;
+      margin-top:20px;
       font-size: 2rem;
     }
 
@@ -182,6 +184,17 @@
       opacity: 0;
       transform: translateY(20px);
     }
+
+.cartaa {
+      background: var(--card-bg);
+      margin-top: 25px;
+      padding: 25px;
+      border-radius: 15px;
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
 
     .card.show {
       opacity: 1;
@@ -256,7 +269,8 @@
 }
 
 .team-card {
-  width: fit-content;   /* la card si adatta alla foto */
+  min-width: 220px;
+  scroll-snap-align: start;
   background: var(--card-bg);
   padding: 15px;
   border-radius: 15px;
@@ -265,21 +279,15 @@
   transition: 0.3s;
 }
 
-
 .team-card:hover {
   transform: translateY(-5px);
 }
 
 .team-card img {
-  width: 100%;        /* riempie tutta la card */
-  height: 220px;      /* altezza fissa */
-  object-fit: cover;  
+  width: 100%;
   border-radius: 12px;
-  display: block;
-  margin: 0 auto;
+  object-fit: cover;
 }
-
-
 
   </style>
 </head>
@@ -327,12 +335,13 @@
 
   <div class="features">
     
-    <div class="card">
+    <div class="cartaa card">
       <h3>Allarme</h3>
       <p>
-        Grazie al rilevatore di peso, rileva la presenza di intrusi quando non sei a casa.  
-        Funziona anche se hai animali domestici: puoi impostare sull’app il peso minimo da rilevare.
-      </p>
+        Grazie ai sensori di peso, rileva la presenza di intrusi quando non sei a casa.  
+         </p>
+         <p>Funziona anche se hai animali domestici: puoi impostare sull’app il peso minimo da rilevare.
+     </p>
     </div>
 
     <div class="card">
@@ -344,7 +353,7 @@
     </div>
 
     <div class="card">
-      <h3>⚖️ Monitoraggio Peso</h3>
+      <h3> Monitoraggio Peso</h3>
       <p>
         Registra automaticamente il tuo peso ogni giorno.  
         Perfetto per chi segue una dieta o vuole monitorare i progressi.  
@@ -364,23 +373,23 @@
   </p>
 <div class="team-scroll">
   <div class="team-card">
-    <img src="1.jpg" alt="Maddalena - CEO">
+    <img src="maddalena.jpg" alt="Maddalena - CEO">
   </div>
 
   <div class="team-card">
-    <img src="2.jpg" alt="Mariastella - COO">
+    <img src="mariastella.jpg" alt="Mariastella - COO">
   </div>
 
   <div class="team-card">
-    <img src="3.jpg" alt="Sara - Analista di Sistema">
+    <img src="sara.jpg" alt="Sara - Analista di Sistema">
   </div>
 
   <div class="team-card">
-    <img src="4.jpg" alt="Flavio - Programmatore">
+    <img src="flavio.jpg" alt="Flavio - Programmatore">
   </div>
 
   <div class="team-card">
-    <img src="5.jpg" alt="Antonio - Marketing Manager">
+    <img src="antonio.jpg" alt="Antonio - Marketing Manager">
   </div>
 </div>
 
