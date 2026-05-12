@@ -37,43 +37,51 @@
 
     /* HEADER */
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 10%;
       position: fixed;
+      top: 0;
       width: 100%;
-      background: rgba(231, 226, 216, 0.85);
+      background: rgba(231, 226, 216, 0.9);
       backdrop-filter: blur(10px);
       z-index: 1000;
+      padding: 15px 0;
     }
 
-    /* LOGO HEADER */
-    header h1 img {
-      height: 32px;
-      width: auto;
-      object-fit: contain;
+    /* CONTENITORE HEADER */
+    .header-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* LOGO */
+    header h1 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 1.8rem;
     }
 
     /* NAV */
+    nav {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* LINK NAV */
     nav a {
-      margin-left: 20px;
       text-decoration: none;
       color: var(--text-main);
-      transition: 0.3s;
       font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: var(--card-bg);
+      transition: 0.3s;
     }
 
     nav a:hover {
+      background: var(--bg-secondary);
       color: var(--accent);
-    }
-
-    /* CTA NAV */
-    .cta-nav {
-      background: var(--text-main);
-      color: white !important;
-      padding: 8px 15px;
-      border-radius: 6px;
     }
 
     /* HERO */
@@ -81,7 +89,7 @@
       height: 100vh;
       display: flex;
       align-items: center;
-      padding: 0 10%;
+      padding: 140px 10% 0;
     }
 
     /* HERO CONTENT */
@@ -110,7 +118,7 @@
       line-height: 1.6;
     }
 
-    /* LOGO HERO (FIX PROPORZIONI) */
+    /* LOGO HERO */
     .hero-img {
       max-width: 240px;
       width: 100%;
@@ -205,7 +213,12 @@
       }
 
       nav {
-        display: none;
+        gap: 10px;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+        padding: 7px 12px;
       }
     }
   </style>
@@ -214,13 +227,15 @@
 <body>
 
 <header>
-  <h1>StandUp</h1>
-  <nav>
-    <a href="#features">Funzioni</a>
-    <a href="#about">Chi siamo</a>
-    <a href="#contact">Contatti</a>
-    <a href="#" class="cta-nav">Preordina</a>
-  </nav>
+  <div class="header-container">
+    <h1>StandUp</h1>
+
+    <nav>
+      <a href="#features">Funzioni</a>
+      <a href="#about">Chi siamo</a>
+      <a href="#contact">Contatti</a>
+    </nav>
+  </div>
 </header>
 
 <section class="hero">
@@ -237,7 +252,9 @@
 
 <section id="features">
   <h2>Funzionalità</h2>
+
   <div class="features">
+
     <div class="card">
       <h3>⏰ Sveglia Smart</h3>
       <p>Si spegne solo quando ti alzi davvero dal letto.</p>
@@ -252,11 +269,13 @@
       <h3>⚖️ Monitoraggio Peso</h3>
       <p>Registra automaticamente il tuo peso ogni giorno.</p>
     </div>
+
   </div>
 </section>
 
 <section id="about">
   <h2>Chi siamo</h2>
+
   <p>
     Siamo un team di innovatori che vuole rivoluzionare il modo in cui inizi la giornata.
     StandUp combina tecnologia smart, sicurezza domestica e benessere in un unico dispositivo.
@@ -274,7 +293,9 @@
 
 <script>
   function scrollToSection(section) {
-    document.getElementById(section).scrollIntoView({ behavior: "smooth" });
+    document.getElementById(section).scrollIntoView({
+      behavior: "smooth"
+    });
   }
 
   // Animazione card on scroll
