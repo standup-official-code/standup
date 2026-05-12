@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StandUp - Il tappeto intelligente</title>
 
+  <!-- SEO -->
+  <meta name="description" content="StandUp è il tappeto intelligente con allarme, sveglia smart e monitoraggio del peso. Protegge la casa e migliora il benessere.">
+
   <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -13,11 +16,14 @@
   <style>
 
     :root {
-      --bg-main: #e7e2d8;
+      --bg-main: #e8e2d9;
       --bg-secondary: #d6d0c4;
       --card-bg: #f5f2eb;
       --text-main: #111;
       --accent: #6b8e23;
+
+      --radius: 12px;
+      --shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
     * {
@@ -33,17 +39,22 @@
       overflow-x: hidden;
     }
 
-    /* HEADER SOLO LOGO */
+    /* HEADER */
     header {
       position: fixed;
       top: 0;
       width: 100%;
       padding: 20px 10%;
-      background: rgba(231, 226, 216, 0.85);
+      background: #d8cdbd;
       backdrop-filter: blur(10px);
       z-index: 1000;
       display: flex;
       justify-content: center;
+      transition: box-shadow 0.3s ease;
+    }
+
+    header.scrolled {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     header h1 {
@@ -51,7 +62,7 @@
       font-size: 1.8rem;
     }
 
-    /* MENU SOTTO HEADER */
+    /* MENU */
     .floating-nav {
       position: fixed;
       top: 80px;
@@ -69,10 +80,10 @@
       color: var(--text-main);
       background: var(--card-bg);
       padding: 10px 16px;
-      border-radius: 12px;
+      border-radius: var(--radius);
       font-weight: 500;
       transition: 0.3s;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      box-shadow: var(--shadow);
     }
 
     .floating-nav a:hover {
@@ -95,6 +106,16 @@
       align-items: center;
       gap: 40px;
       width: 100%;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .hero h2 {
@@ -216,6 +237,47 @@
       }
     }
 
+
+
+.team-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 20px 0;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+
+.team-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.team-scroll::-webkit-scrollbar-thumb {
+  background: #b8b2a6;
+  border-radius: 10px;
+}
+
+.team-card {
+  min-width: 220px;
+  scroll-snap-align: start;
+  background: var(--card-bg);
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  flex-shrink: 0;
+  transition: 0.3s;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+.team-card img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
   </style>
 </head>
 
@@ -225,7 +287,7 @@
   <h1>StandUp</h1>
 </header>
 
-<!-- MENU SEPARATO -->
+<!-- MENU -->
 <div class="floating-nav">
   <a href="#features">Funzioni</a>
   <a href="#about">Chi siamo</a>
@@ -240,7 +302,7 @@
       <h2><span>Protegge la casa,</span> migliora il benessere.</h2>
 
       <p>
-        StandUp si propone come un tappeto intelligente che nasconde funzionalità utili per tutti i giorni.
+        StandUp è un tappeto intelligente che integra funzionalità utili per la sicurezza e il benessere quotidiano.
       </p>
 
       <button class="btn" onclick="scrollToSection('features')">
@@ -248,7 +310,7 @@
       </button>
     </div>
 
-    <img src="logo.png" alt="StandUp tappeto smart" class="hero-img">
+    <img src="logo.png" alt="Logo StandUp - tappeto smart" class="hero-img">
 
   </div>
 </section>
@@ -257,24 +319,34 @@
 
   <h2>Funzionalità</h2>
   <h3>
-     Collegato tramite un' applicazione al proprio smartphone, StandUp funziona come:
+     Collegato tramite un’applicazione al proprio smartphone, StandUp funziona come:
   </h3>
 
   <div class="features">
     
     <div class="card">
-      <h3> Allarme</h3>
-      <p> Attraverso il rilevatore di peso è in grado di rilevare la presenza di intrusi quando non sei a casa.    PS.va bene anche se hai animali in casa perchè è possibile regolare sullo smartphone il peso minimo</p>
+      <h3>Allarme</h3>
+      <p>
+        Grazie al rilevatore di peso, rileva la presenza di intrusi quando non sei a casa.  
+        Funziona anche se hai animali domestici: puoi impostare sull’app il peso minimo da rilevare.
+      </p>
     </div>
 
     <div class="card">
-      <h3> Sveglia Smart</h3>
-      <p>La sveglia suona sullo smartphone e si disattiva solamente se sali sopra al tappeto. Dì addio alla pigrizia.</p>
+      <h3>Sveglia Smart</h3>
+      <p>
+        La sveglia suona sullo smartphone e si disattiva solo quando sali sul tappeto.  
+        Addio pigrizia.
+      </p>
     </div>
 
     <div class="card">
       <h3>⚖️ Monitoraggio Peso</h3>
-      <p>Registra automaticamente il tuo peso ogni giorno. Ottimo per chi deve seguire una dieta e vuole monitorare il proprio peso. Tutto verrà salvato in un archivio sempre disponibile. </p>
+      <p>
+        Registra automaticamente il tuo peso ogni giorno.  
+        Perfetto per chi segue una dieta o vuole monitorare i progressi.  
+        Tutti i dati vengono salvati in un archivio sempre disponibile.
+      </p>
     </div>
 
   </div>
@@ -285,8 +357,29 @@
   <h2>Chi siamo</h2>
 
   <p>
-    Siamo un team di innovatori appartenenti alla classe 5BI della scuola I.T.T. Sen Onofrio Jannuzzi situata ad Andria. 
+    Siamo un team di innovatori della classe 5BI dell’I.T.T. “Sen. Onofrio Jannuzzi” di Andria.
   </p>
+<div class="team-scroll">
+  <div class="team-card">
+    <img src="maddalena.jpg" alt="Maddalena - CEO">
+  </div>
+
+  <div class="team-card">
+    <img src="mariastella.jpg" alt="Mariastella - COO">
+  </div>
+
+  <div class="team-card">
+    <img src="sara.jpg" alt="Sara - Analista di Sistema">
+  </div>
+
+  <div class="team-card">
+    <img src="flavio.jpg" alt="Flavio - Programmatore">
+  </div>
+
+  <div class="team-card">
+    <img src="antonio.jpg" alt="Antonio - Marketing Manager">
+  </div>
+</div>
 
 </section>
 
@@ -295,7 +388,13 @@
   <h2>Contattaci</h2>
 
   <p>Email: standupufficiale@gmail.com</p>
-  <p>Instagram: </p><a href="https://www.instagram.com/_standupofficial?igsh=MXprOXZtYmZ4bHV1"> _stanupofficial</a>
+
+  <p>
+    Instagram:
+    <a href="https://www.instagram.com/_standupofficial?igsh=MXprOXZtYmZ4bHV1">
+      _standupofficial
+    </a>
+  </p>
 
 </section>
 
@@ -315,18 +414,20 @@
   const cards = document.querySelectorAll(".card");
 
   const observer = new IntersectionObserver(entries => {
-
     entries.forEach(entry => {
-
       if (entry.isIntersecting) {
         entry.target.classList.add("show");
       }
-
     });
-
   });
 
   cards.forEach(card => observer.observe(card));
+
+  // Effetto ombra header
+  window.addEventListener("scroll", () => {
+    document.querySelector("header")
+      .classList.toggle("scrolled", window.scrollY > 10);
+  });
 
 </script>
 
