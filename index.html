@@ -11,7 +11,7 @@
   <link rel="icon" type="image/x-icon" href="logo.png">
   
   <style>
-    /* VARIABILI COLORI */
+
     :root {
       --bg-main: #e7e2d8;
       --bg-secondary: #d6d0c4;
@@ -20,14 +20,12 @@
       --accent: #6b8e23;
     }
 
-    /* RESET */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /* BODY */
     body {
       background: var(--bg-main);
       color: var(--text-main);
@@ -35,64 +33,62 @@
       overflow-x: hidden;
     }
 
-    /* HEADER */
+    /* HEADER SOLO LOGO */
     header {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(231, 226, 216, 0.9);
+      padding: 20px 10%;
+      background: rgba(231, 226, 216, 0.85);
       backdrop-filter: blur(10px);
       z-index: 1000;
-      padding: 15px 0;
-    }
-
-    /* CONTENITORE HEADER */
-    .header-container {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
+      justify-content: center;
     }
 
-    /* LOGO */
     header h1 {
       font-family: 'Manrope', sans-serif;
       font-size: 1.8rem;
     }
 
-    /* NAV */
-    nav {
+    /* MENU SOTTO HEADER */
+    .floating-nav {
+      position: fixed;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
-      gap: 15px;
+      gap: 12px;
+      z-index: 999;
       flex-wrap: wrap;
       justify-content: center;
     }
 
-    /* LINK NAV */
-    nav a {
+    .floating-nav a {
       text-decoration: none;
       color: var(--text-main);
-      font-weight: 500;
-      padding: 8px 14px;
-      border-radius: 8px;
       background: var(--card-bg);
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-weight: 500;
       transition: 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
-    nav a:hover {
+    .floating-nav a:hover {
       background: var(--bg-secondary);
       color: var(--accent);
+      transform: translateY(-2px);
     }
 
     /* HERO */
     .hero {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 140px 10% 0;
+      padding: 140px 10% 40px;
     }
 
-    /* HERO CONTENT */
     .hero-content {
       display: flex;
       justify-content: space-between;
@@ -101,7 +97,6 @@
       width: 100%;
     }
 
-    /* TESTO HERO */
     .hero h2 {
       font-size: 3rem;
       font-family: 'Manrope', sans-serif;
@@ -118,7 +113,6 @@
       line-height: 1.6;
     }
 
-    /* LOGO HERO */
     .hero-img {
       max-width: 240px;
       width: 100%;
@@ -143,7 +137,7 @@
       background: #333;
     }
 
-    /* SEZIONI */
+    /* SECTIONS */
     section {
       padding: 80px 10%;
     }
@@ -154,14 +148,13 @@
       font-size: 2rem;
     }
 
-    /* FEATURES GRID */
+    /* FEATURES */
     .features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 30px;
     }
 
-    /* CARD */
     .card {
       background: var(--card-bg);
       padding: 25px;
@@ -171,7 +164,6 @@
       transform: translateY(20px);
     }
 
-    /* ANIMAZIONE */
     .card.show {
       opacity: 1;
       transform: translateY(0);
@@ -196,7 +188,7 @@
       font-size: 0.9rem;
     }
 
-    /* RESPONSIVE */
+    /* MOBILE */
     @media(max-width: 768px) {
 
       .hero-content {
@@ -212,79 +204,99 @@
         max-width: 180px;
       }
 
-      nav {
-        gap: 10px;
+      .floating-nav {
+        top: 75px;
+        width: 100%;
+        padding: 0 10px;
       }
 
-      nav a {
+      .floating-nav a {
         font-size: 0.9rem;
-        padding: 7px 12px;
+        padding: 8px 14px;
       }
     }
+
   </style>
 </head>
 
 <body>
 
 <header>
-  <div class="header-container">
-    <h1>StandUp</h1>
-
-    <nav>
-      <a href="#features">Funzioni</a>
-      <a href="#about">Chi siamo</a>
-      <a href="#contact">Contatti</a>
-    </nav>
-  </div>
+  <h1>StandUp</h1>
 </header>
 
+<!-- MENU SEPARATO -->
+<div class="floating-nav">
+  <a href="#features">Funzioni</a>
+  <a href="#about">Chi siamo</a>
+  <a href="#contact">Contatti</a>
+</div>
+
 <section class="hero">
+
   <div class="hero-content">
+
     <div>
-      <h2>Svegliati. <span>Proteggiti.</span> Evolvi.</h2>
-      <p>Il tappeto intelligente che spegne la sveglia, protegge la tua casa e monitora il tuo peso.</p>
-      <button class="btn" onclick="scrollToSection('features')">Scopri di più</button>
+      <h2><span>Protegge la casa,</span> migliora il benessere.</h2>
+
+      <p>
+        StandUp si propone come un tappeto intelligente che nasconde funzionalità utili per tutti i giorni.
+      </p>
+
+      <button class="btn" onclick="scrollToSection('features')">
+        Scopri di più
+      </button>
     </div>
 
     <img src="logo.png" alt="StandUp tappeto smart" class="hero-img">
+
   </div>
 </section>
 
 <section id="features">
+
   <h2>Funzionalità</h2>
+  <h3>
+     Collegato tramite un' applicazione al proprio smartphone, StandUp funziona come:
+  </h3>
 
   <div class="features">
-
+    
     <div class="card">
-      <h3>⏰ Sveglia Smart</h3>
-      <p>Si spegne solo quando ti alzi davvero dal letto.</p>
+      <h3> Allarme</h3>
+      <p> Attraverso il rilevatore di peso è in grado di rilevare la presenza di intrusi quando non sei a casa.    PS.va bene anche se hai animali in casa perchè è possibile regolare sullo smartphone il peso minimo</p>
     </div>
 
     <div class="card">
-      <h3>🚨 Modalità Allarme</h3>
-      <p>Rileva intrusioni e invia notifiche al tuo smartphone.</p>
+      <h3> Sveglia Smart</h3>
+      <p>La sveglia suona sullo smartphone e si disattiva solamente se sali sopra al tappeto. Dì addio alla pigrizia.</p>
     </div>
 
     <div class="card">
       <h3>⚖️ Monitoraggio Peso</h3>
-      <p>Registra automaticamente il tuo peso ogni giorno.</p>
+      <p>Registra automaticamente il tuo peso ogni giorno. Ottimo per chi deve seguire una dieta e vuole monitorare il proprio peso. Tutto verrà salvato in un archivio sempre disponibile. </p>
     </div>
 
   </div>
 </section>
 
 <section id="about">
+
   <h2>Chi siamo</h2>
 
   <p>
-    Siamo un team di innovatori che vuole rivoluzionare il modo in cui inizi la giornata.
-    StandUp combina tecnologia smart, sicurezza domestica e benessere in un unico dispositivo.
+    Siamo un team di innovatori appartenenti alla classe 5BI della scuola I.T.T. Sen Onofrio Jannuzzi situata ad Andria. 
   </p>
+
 </section>
 
 <section id="contact">
+
   <h2>Contattaci</h2>
-  <p>Email: info@standup.com</p>
+
+  <p>Email: standupufficiale@gmail.com</p>
+  <p>Instagram: </p><a href="https://www.instagram.com/_standupofficial?igsh=MXprOXZtYmZ4bHV1"> _stanupofficial</a>
+
 </section>
 
 <footer>
@@ -292,6 +304,7 @@
 </footer>
 
 <script>
+
   function scrollToSection(section) {
     document.getElementById(section).scrollIntoView({
       behavior: "smooth"
@@ -302,14 +315,19 @@
   const cards = document.querySelectorAll(".card");
 
   const observer = new IntersectionObserver(entries => {
+
     entries.forEach(entry => {
+
       if (entry.isIntersecting) {
         entry.target.classList.add("show");
       }
+
     });
+
   });
 
   cards.forEach(card => observer.observe(card));
+
 </script>
 
 </body>
