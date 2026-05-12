@@ -277,16 +277,27 @@
   box-shadow: var(--shadow);
   flex-shrink: 0;
   transition: 0.3s;
+  width: fit-content;     /* <— aggiunto */
 }
+
+.team-card img {
+  width: 100%;            /* <— la foto occupa tutto il contenitore */
+  height: auto;           /* <— mantiene le proporzioni */
+  border-radius: 12px;
+  object-fit: contain;    /* <— nessun taglio */
+}
+
 
 .team-card:hover {
   transform: translateY(-5px);
 }
-
-.team-card img {
-  width: 100%;
+.responsive-img {
+  width: 100%;        /* si adatta alla larghezza del contenitore */
+  max-width: 600px;   /* limite massimo per non diventare enorme */
+  height: auto;       /* mantiene le proporzioni */
+  display: block;
+  margin: 0 auto;     /* centra l'immagine */
   border-radius: 12px;
-  object-fit: cover;
 }
 
   </style>
@@ -304,6 +315,7 @@
   <a href="#about">Chi siamo</a>
   <a href="#contact">Contatti</a>
 </div>
+<img src="tappeto_foto.jpg" alt="Foto StandUp" class="responsive-img">
 
 <section class="hero">
 
